@@ -1,0 +1,96 @@
+$(document).ready(function () {
+  $(window).scroll(function () {
+    // sticky navbar on scroll script
+    if (this.scrollY > 20) {
+      $(".navbar").addClass("sticky");
+    } else {
+      $(".navbar").removeClass("sticky");
+    }
+
+    // scroll-up button show/hide script
+    if (this.scrollY > 500) {
+      $(".scroll-up-btn").addClass("show");
+    } else {
+      $(".scroll-up-btn").removeClass("show");
+    }
+  });
+
+  // slide-up script
+  $(".scroll-up-btn").click(function () {
+    $("html").animate({ scrollTop: 0 });
+    // removing smooth scroll on slide-up button click
+    $("html").css("scrollBehavior", "auto");
+  });
+
+  $(".navbar .menu li a").click(function () {
+    // applying again smooth scroll on menu items click
+    $("html").css("scrollBehavior", "smooth");
+  });
+
+  // toggle menu/navbar script
+  $(".menu-btn").click(function () {
+    $(".navbar .menu").toggleClass("active");
+    $(".menu-btn i").toggleClass("active");
+  });
+
+  //   typing text animation script
+  var typed = new Typed(".typing", {
+    strings: ["Data Analyst"],
+    typeSpeed: 100,
+    backSpeed: 60,
+    loop: true,
+  });
+
+  var typed = new Typed(".typing-2", {
+    strings: ["Data Analyst"],
+    typeSpeed: 100,
+    backSpeed: 60,
+    loop: true,
+  });
+
+  // owl carousel script
+  $(".carousel").owlCarousel({
+    margin: 20,
+    loop: true,
+    autoplay: true,
+    autoplayTimeOut: 2000,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1,
+        nav: false,
+      },
+      600: {
+        items: 2,
+        nav: false,
+      },
+      1000: {
+        items: 3,
+        nav: false,
+      },
+    },
+  });
+});
+
+// Resume Display Code
+
+isOpen: boolean = false;
+
+resumeUrl: string = "Hitesh_Vekariya_Resume.pdf";
+
+function openModal() {
+  this.isOpen = true;
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  this.isOpen = false;
+  document.body.style.overflow = "auto";
+}
+
+function downloadResume() {
+  const link = document.createElement("a");
+  link.href = this.resumeUrl;
+  link.download = "Hitesh_Vekariya_Resume.pdf";
+  link.click();
+}
